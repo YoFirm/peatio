@@ -35,7 +35,7 @@ module Peatio
     config.time_zone = ENV.fetch('TIMEZONE')
 
     # Don't suppress exceptions in before_commit & after_commit callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    # config.active_record.raise_in_transactional_callbacks = true
 
     # Configure relative url root by setting URL_ROOT_PATH environment variable.
     # Used by microkube with API Gateway.
