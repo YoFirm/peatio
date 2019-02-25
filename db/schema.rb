@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190213104708) do
+ActiveRecord::Schema.define(version: 20190225171726) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "member_id",                                                        null: false
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20190213104708) do
     t.decimal  "withdraw_limit_24h",                 precision: 32, scale: 16, default: "0.0",  null: false
     t.decimal  "withdraw_limit_72h",                 precision: 32, scale: 16, default: "0.0",  null: false
     t.integer  "position",                                                     default: 0,      null: false
-    t.string   "options",               limit: 1000,                           default: "{}",   null: false
+    t.string   "options",               limit: 1000,                           default: "{}"
     t.boolean  "enabled",                                                      default: true,   null: false
     t.bigint   "base_factor",                                                  default: 1,      null: false
     t.integer  "precision",             limit: 1,                              default: 8,      null: false
