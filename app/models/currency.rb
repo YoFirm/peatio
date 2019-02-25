@@ -1,7 +1,7 @@
 # encoding: UTF-8
 # frozen_string_literal: true
 
-class Currency < ActiveRecord::Base
+class Currency < ApplicationRecord
 
   DEFAULT_OPTIONS_SCHEMA = {
     erc20_contract_address: {
