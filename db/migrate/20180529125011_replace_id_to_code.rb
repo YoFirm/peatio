@@ -1,4 +1,4 @@
-class ReplaceIdToCode < ActiveRecord::Migration
+class ReplaceIdToCode < ActiveRecord::Migration[4.2]
   def change
     ActiveRecord::Base.transaction do
       execute %[ALTER TABLE `currencies` CHANGE `code` `code` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;]
