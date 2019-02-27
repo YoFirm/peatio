@@ -39,14 +39,16 @@ class Order < ApplicationRecord
 
   after_commit on: :update do
     next unless ord_type == 'limit'
-    event = case previous_changes.dig('state', 1)
+
+    event = case state
       when 'cancel' then 'order_canceled'
       when 'done'   then 'order_completed'
       else 'order_updated'
     end
 
-    EventAPI.notify ['market', market_id, event].join('.'), \
-      Serializers::EventAPI.const_get(event.camelize).call(self)
+    Serializers::EventAPI.const_get(event.camelize).call(self).tap do |payload|
+      EventAPI.notify ['market', market_id, event].join('.'), payload
+    end
   end
 
   def funds_used
