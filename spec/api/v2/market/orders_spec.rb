@@ -18,7 +18,7 @@ describe API::V2::Market::Orders, type: :request do
     end
 
     it 'requires authentication' do
-      get '/api/v2/market/orders', market: 'btcusd'
+      get '/api/v2/market/orders', params: { market: 'btcusd' }
       expect(response.code).to eq '401'
     end
 
