@@ -58,7 +58,7 @@ describe Admin::BlockchainsController, type: :controller do
 
   describe '#destroy' do
     it 'doesn\'t support deletion of blockchain' do
-      expect { delete :destroy, id: existing_blockchain.id }.to raise_error(ActionController::UrlGenerationError)
+      expect { delete :destroy, params: { id: existing_blockchain.id } }.to raise_error(ActionController::UrlGenerationError)
     end
   end
 end

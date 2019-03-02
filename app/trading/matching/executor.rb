@@ -86,8 +86,11 @@ module Matching
           table     = record.class.arel_table
           statement = Arel::UpdateManager.new
           statement.table(table)
+          # binding.pry
           statement.where(table[:id].eq(record.id))
-          updates = record.changed_attributes.map do |(attribute, previous_value)|
+          # binding.pry
+          # FIXME: Something wrong happens here.
+          updates = record.changed_attributes.map do |(attribute, _)|
             if Order === record
               value = record.public_send(attribute)
               [table[attribute], { wait: 100, done: 200, cancel: 0 }.with_indifferent_access.fetch(value, value)]
@@ -95,7 +98,9 @@ module Matching
               [table[attribute], record.public_send(attribute)]
             end
           end
+          # binding.pry
           statement.set updates
+          # Here is warning.
           statement.to_sql
         end.join('; ').tap do |sql|
           Rails.logger.debug { sql }
