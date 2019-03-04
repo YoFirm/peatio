@@ -22,6 +22,7 @@ Dir.chdir APP_ROOT do
 
   {'VAULT_TOKEN' => VAULT_TOKEN}.tap do |env|
     system(env, 'docker-compose -f config/backend.yml up -d')
+    sleep 10 # Wait for database.
   end
 
   puts "\n=== Setup Vault"
