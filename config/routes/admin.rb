@@ -15,8 +15,8 @@ namespace :admin do
 
   # binding.irb
 
-  resources 'deposits/:currency', controller: 'admin/deposits/base', to:  AdminDepositsRouter.new,  as: 'deposit'
-  resources 'withdraws/:currency',controller: 'admin/withdrawsbase',  to: AdminWithdrawsRouter.new, as: 'withdraw'
+  resources 'deposits/:currency', to:  AdminDepositsRouter.new,  as: 'deposit'
+  resources 'withdraws/:currency', to: AdminWithdrawsRouter.new, as: 'withdraw'
 
   %i[liability asset revenue expense].each do |type|
     get "operations/#{type.to_s.pluralize}/(:currency)",
