@@ -16,6 +16,7 @@ module Peatio
 
     # Eager loading app dir
     config.eager_load_paths += Dir[Rails.root.join('app')]
+    config.eager_load_paths += Dir[Rails.root.join('lib/peatio')]
 
     # Configure Sentry as early as possible.
     if ENV['SENTRY_DSN_BACKEND'].present?
@@ -43,7 +44,7 @@ module Peatio
     # Automatically load and reload constants from "lib/*":
     #   lib/aasm/locking.rb => AASM::Locking
     # We disable eager load here since lib contains lot of stuff which is not required for typical app functions.
-    config.paths.add 'lib', eager_load: false, autoload: true
+    config.paths.add 'lib/peatio', eager_load: false, autoload: true
 
     # Remove cookies and cookies session.
     config.middleware.delete ActionDispatch::Cookies
