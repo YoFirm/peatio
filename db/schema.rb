@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20190225171726) do
   create_table "assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "code",                                                     null: false
     t.string   "currency_id",                                              null: false
-    t.integer  "reference_id"
     t.string   "reference_type"
+    t.integer  "reference_id"
     t.decimal  "debit",          precision: 32, scale: 16, default: "0.0", null: false
     t.decimal  "credit",         precision: 32, scale: 16, default: "0.0", null: false
     t.datetime "created_at",                                               null: false
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20190225171726) do
     t.datetime "created_at",                                                                    null: false
     t.datetime "updated_at",                                                                    null: false
     t.index ["enabled"], name: "index_currencies_on_enabled", using: :btree
+    t.index ["enabled"], name: "index_currencies_on_enabled_and_code", using: :btree
     t.index ["position"], name: "index_currencies_on_position", using: :btree
   end
 
@@ -102,8 +103,8 @@ ActiveRecord::Schema.define(version: 20190225171726) do
   create_table "expenses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "code",                                                     null: false
     t.string   "currency_id",                                              null: false
-    t.integer  "reference_id"
     t.string   "reference_type"
+    t.integer  "reference_id"
     t.decimal  "debit",          precision: 32, scale: 16, default: "0.0", null: false
     t.decimal  "credit",         precision: 32, scale: 16, default: "0.0", null: false
     t.datetime "created_at",                                               null: false
@@ -116,8 +117,8 @@ ActiveRecord::Schema.define(version: 20190225171726) do
     t.integer  "code",                                                     null: false
     t.string   "currency_id",                                              null: false
     t.integer  "member_id"
-    t.integer  "reference_id"
     t.string   "reference_type"
+    t.integer  "reference_id"
     t.decimal  "debit",          precision: 32, scale: 16, default: "0.0", null: false
     t.decimal  "credit",         precision: 32, scale: 16, default: "0.0", null: false
     t.datetime "created_at",                                               null: false
@@ -218,8 +219,8 @@ ActiveRecord::Schema.define(version: 20190225171726) do
     t.integer  "code",                                                     null: false
     t.string   "currency_id",                                              null: false
     t.integer  "member_id"
-    t.integer  "reference_id"
     t.string   "reference_type"
+    t.integer  "reference_id"
     t.decimal  "debit",          precision: 32, scale: 16, default: "0.0", null: false
     t.decimal  "credit",         precision: 32, scale: 16, default: "0.0", null: false
     t.datetime "created_at",                                               null: false
